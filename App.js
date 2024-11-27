@@ -8,6 +8,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import LoadingScreen from './app/LoadingScreen'; // Tela de carregamento
 import HomeScreen from './app/HomeScreen/index'; // Tela Home
 import ProductList from './app/ProductList/index';
+import LoginScreen from './app/Login/index';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,11 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         {/* Tela de Produtos */}
         <Stack.Screen name="ProductList" component={ProductList} />   
+        {/* Tela de Login */}
+        <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }
+
