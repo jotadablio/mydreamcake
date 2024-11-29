@@ -4,44 +4,28 @@ import { View, Text, Image, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import AddFundsScreen from '../addFunds/index';
+import ProfileScreen from '../Profile';
 import styles from './styles'; // Importando os estilos
-
-// Telas para a barra inferior
-function OrdersScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text>Pedidos</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text>Perfil</Text>
-    </View>
-  );
-}
+import { useAuth } from '../context/AuthContext';
 
 const Tab = createBottomTabNavigator();
 
 export default function HomeScreen({ navigation }) {
-  const logoPosition = useRef(new Animated.Value(0)).current; // Posição inicial do logotipo
-  const buttonOpacity = useRef(new Animated.Value(0)).current; // Opacidade inicial dos botões
+  const logoPosition = useRef(new Animated.Value(0)).current;
+  const buttonOpacity = useRef(new Animated.Value(0)).current;
+  const { isLoggedIn } = useAuth(); // Estado de login
 
   useEffect(() => {
-    // Animação para mover o logotipo para cima
     Animated.timing(logoPosition, {
-      toValue: -100, // Subir o logotipo em 100 unidades
-      duration: 1000, // Duração de 1 segundo
+      toValue: -100,
+      duration: 1000,
       useNativeDriver: true,
     }).start();
 
-    // Animação para exibir os botões (opacidade)
     Animated.timing(buttonOpacity, {
-      toValue: 1, // Opacidade final
-      duration: 1000, // Duração de 1 segundo
-      delay: 500, // Atraso para começar após o logotipo
+      toValue: 1,
+      duration: 1000,
+      delay: 500,
       useNativeDriver: true,
     }).start();
   }, []);
@@ -52,7 +36,7 @@ export default function HomeScreen({ navigation }) {
         tabBarStyle: { backgroundColor: '#fff' },
         tabBarActiveTintColor: '#000',
         tabBarInactiveTintColor: '#888',
-        headerShown: false, // Remove o cabeçalho padrão
+        headerShown: false,
       }}
     >
       {/* Tela Inicial */}
@@ -71,25 +55,31 @@ export default function HomeScreen({ navigation }) {
       >
         {() => (
           <View style={styles.container}>
-            {/* Logotipo animado */}
             <Animated.View style={{ transform: [{ translateY: logoPosition }] }}>
               <Image
                 source={require('../../assets/images/logo.jpg')}
                 style={styles.logo}
               />
             </Animated.View>
-
-            {/* Botões animados */}
             <Animated.View
               style={[styles.buttonsContainer, { opacity: buttonOpacity }]}
             >
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('ProductList')} // Navega para a tela de cupcakes
+                onPress={() => navigation.navigate('ProductList')}
               >
                 <Text style={styles.buttonText}>CONSUMIR NA LOJA</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  if (isLoggedIn) {
+                    navigation.navigate('Profile');
+                  } else {
+                    navigation.navigate('Login');
+                  }
+                }}
+              >
                 <Text style={styles.buttonText}>DELIVERY</Text>
               </TouchableOpacity>
             </Animated.View>
@@ -100,7 +90,14 @@ export default function HomeScreen({ navigation }) {
       {/* Tela Pedidos */}
       <Tab.Screen
         name="Orders"
-        component={OrdersScreen}
+        listeners={{
+          tabPress: (e) => {
+            if (!isLoggedIn) {
+              e.preventDefault(); // Previne a navegação padrão
+              navigation.navigate('Login'); // Redireciona para login
+            }
+          },
+        }}
         options={{
           tabBarLabel: 'Pedidos',
           tabBarIcon: ({ focused }) => (
@@ -111,38 +108,56 @@ export default function HomeScreen({ navigation }) {
             />
           ),
         }}
-      />
+      >
+        {() =>
+          isLoggedIn ? (
+            <View style={styles.screen}>
+              <Text>Pedidos Logados</Text>
+            </View>
+          ) : null
+        }
+      </Tab.Screen>
 
+      {/* Tela Adicionar Saldo */}
       <Tab.Screen
-          name="AddFunds"
-          component={AddFundsScreen} // Referência à tela de Adicionar Saldo
-          options={{
-             tabBarLabel: 'Saldo',
-            tabBarIcon: ({ focused }) => (
-      <Ionicons
-        name={focused ? 'wallet' : 'wallet-outline'}
-        size={24}
-        color={focused ? '#000' : '#888'}
-      />
-    ),
-  }}
-      />
-
-      {/* Tela Perfil */}
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="AddFunds"
+        component={AddFundsScreen}
         options={{
-          tabBarLabel: 'Perfil',
+          tabBarLabel: 'Saldo',
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name={focused ? 'person' : 'person-outline'}
+              name={focused ? 'wallet' : 'wallet-outline'}
               size={24}
               color={focused ? '#000' : '#888'}
             />
           ),
         }}
       />
+
+      {/* Tela Perfil */}
+      <Tab.Screen
+         name="Profile"
+         component={ProfileScreen} // Referência ao componente importado
+         listeners={{
+           tabPress: (e) => {
+             if (!isLoggedIn) {
+               e.preventDefault(); // Previne a navegação padrão
+               navigation.navigate('Login'); // Redireciona para login
+             }
+           },
+         }}
+         options={{
+           tabBarLabel: 'Perfil',
+           tabBarIcon: ({ focused }) => (
+             <Ionicons
+               name={focused ? 'person' : 'person-outline'}
+               size={24}
+               color={focused ? '#000' : '#888'}
+            />
+          ),
+        }}
+      >
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }

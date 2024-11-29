@@ -3,17 +3,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { AuthProvider, useAuth } from './app/context/AuthContext';
 
 // Importar telas
 import LoadingScreen from './app/LoadingScreen'; // Tela de carregamento
 import HomeScreen from './app/HomeScreen/index'; // Tela Home
 import ProductList from './app/ProductList/index';
 import LoginScreen from './app/Login/index';
+import ProfileScreen from './app/Profile/index';
 
 const Stack = createStackNavigator();
 
-export default function App() {
+export default function App() { 
   return (
+    <AuthProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* Tela de Loading */}
@@ -24,9 +27,11 @@ export default function App() {
         <Stack.Screen name="ProductList" component={ProductList} />   
         {/* Tela de Login */}
         <Stack.Screen name="Login" component={LoginScreen} />
+        {/*Perfil*/}
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-    
+    </AuthProvider>
   );
 }
 

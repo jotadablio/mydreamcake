@@ -1,34 +1,45 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import styles from './styles';
 
-const ProfileScreen = () => {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>PERFIL</Text>
+export default function ProfileScreen() {
+  return (
+    <View style={styles.container}>
+      {/* Cabeçalho */}
+      <View style={styles.header}>
+        <TouchableOpacity>
+          <Text style={styles.backButton}>{"<"}</Text>
+        </TouchableOpacity>
+        <Text style={styles.title}>PERFIL</Text>
+      </View>
 
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Minhas informações</Text>
-            </TouchableOpacity>
+      {/* Ícone do Perfil */}
+      <Image
+        source={require('../../assets/icons/perfil.png')} // Substitua pelo ícone correto
+        style={styles.profileIcon}
+      />
 
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Histórico de pedidos</Text>
-            </TouchableOpacity>
+      {/* Botões */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Minhas informações</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Histórico de pedidos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Carteira</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Feedback</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Compartilhar</Text>
+        </TouchableOpacity>
+      </View>
 
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Carteira</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Feedback</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Compartilhar</Text>
-            </TouchableOpacity>
-
-            <Text style={styles.version}>Versão 1.0.0</Text>
-        </View>
-    );
-};
-
+      {/* Versão */}
+      <Text style={styles.version}>Versão 1.0.0</Text>
+    </View>
+  );
+}
