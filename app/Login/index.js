@@ -5,12 +5,17 @@ import { useAuth } from '../context/AuthContext';
 import styles from './styles';
 
 export default function LoginScreen({ navigation }) {
-    const { setIsLoggedIn } = useAuth(); // Função para atualizar o estado de login
-  
-    const handleLogin = () => {
-      setIsLoggedIn(true); // Define como logado
-      navigation.replace('Profile'); // Redireciona para o perfil
-    };
+  const { login, redirectAfterLogin, setRedirectAfterLogin } = useAuth();
+
+  const handleLogin = () => {
+    login();
+    if (redirectAfterLogin) {
+      navigation.replace(redirectAfterLogin); // Navega para a rota salva
+      setRedirectAfterLogin(null); // Limpa o redirecionamento
+    } else {
+      navigation.navigate('Home'); // Volta para a Home caso não tenha redirecionamento
+    }
+  };
   
     return (
       <View style={styles.container}>

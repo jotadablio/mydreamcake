@@ -7,13 +7,14 @@ import AddFundsScreen from '../addFunds/index';
 import ProfileScreen from '../Profile';
 import styles from './styles'; // Importando os estilos
 import { useAuth } from '../context/AuthContext';
+import ShopScreen from '../Shop';
 
 const Tab = createBottomTabNavigator();
 
 export default function HomeScreen({ navigation }) {
   const logoPosition = useRef(new Animated.Value(0)).current;
   const buttonOpacity = useRef(new Animated.Value(0)).current;
-  const { isLoggedIn } = useAuth(); // Estado de login
+  const { isLoggedIn, setRedirectAfterLogin } = useAuth(); // Estado de login
 
   useEffect(() => {
     Animated.timing(logoPosition, {
@@ -74,8 +75,9 @@ export default function HomeScreen({ navigation }) {
                 style={styles.button}
                 onPress={() => {
                   if (isLoggedIn) {
-                    navigation.navigate('Profile');
+                    navigation.navigate('Delivery');
                   } else {
+                    setRedirectAfterLogin('Delivery');
                     navigation.navigate('Login');
                   }
                 }}
@@ -93,7 +95,8 @@ export default function HomeScreen({ navigation }) {
         listeners={{
           tabPress: (e) => {
             if (!isLoggedIn) {
-              e.preventDefault(); // Previne a navegação padrão
+              e.preventDefault();
+              setRedirectAfterLogin('Shop'); 
               navigation.navigate('Login'); // Redireciona para login
             }
           },
@@ -111,9 +114,7 @@ export default function HomeScreen({ navigation }) {
       >
         {() =>
           isLoggedIn ? (
-            <View style={styles.screen}>
-              <Text>Pedidos Logados</Text>
-            </View>
+            <ShopScreen/>
           ) : null
         }
       </Tab.Screen>
@@ -136,23 +137,24 @@ export default function HomeScreen({ navigation }) {
 
       {/* Tela Perfil */}
       <Tab.Screen
-         name="Profile"
-         component={ProfileScreen} // Referência ao componente importado
-         listeners={{
-           tabPress: (e) => {
-             if (!isLoggedIn) {
-               e.preventDefault(); // Previne a navegação padrão
-               navigation.navigate('Login'); // Redireciona para login
-             }
-           },
-         }}
-         options={{
-           tabBarLabel: 'Perfil',
-           tabBarIcon: ({ focused }) => (
-             <Ionicons
-               name={focused ? 'person' : 'person-outline'}
-               size={24}
-               color={focused ? '#000' : '#888'}
+        name="Profile"
+        component={ProfileScreen}
+        listeners={{
+          tabPress: (e) => {
+            if (!isLoggedIn) {
+              e.preventDefault();
+              setRedirectAfterLogin('Profile'); 
+              navigation.navigate('Login');
+            }
+          },
+        }}
+        options={{
+          tabBarLabel: 'Perfil',
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'person' : 'person-outline'}
+              size={24}
+              color={focused ? '#000' : '#888'}
             />
           ),
         }}
