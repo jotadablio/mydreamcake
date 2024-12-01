@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet , StatusBar} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     marginBottom: 20,
+    paddingTop: StatusBar.currentHeight,
   },
   title: {
     fontSize: 20,

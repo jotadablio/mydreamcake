@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StatusBar } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const cupcakes = [
   { id: '1', name: 'Cupcake Red Velvet Delícia', price: 'R$4,00', image: require('../../assets/cupcakes/cupcake1.png') },
@@ -10,6 +11,16 @@ const cupcakes = [
 ];
 
 export default function ProductList() {
+  const navigation = useNavigation();
+  
+  const handleGoBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack(); // Voltar para a tela anterior
+    } else {
+      navigation.navigate('Home'); // Redirecionar para a HomeScreen se não puder voltar
+    }
+  };
+  
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={item.image} style={styles.image} />
@@ -23,7 +34,14 @@ export default function ProductList() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Lista de Cupcakes</Text>
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent"/>
+      <View style={styles.topbar}>
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+          <Text style={styles.backButtonText}>{"< Voltar"}</Text>
+        </TouchableOpacity>
+        <Text style={styles.title}>Lista de Cupcakes</Text>
+      </View>
+
       <FlatList
         data={cupcakes}
         renderItem={renderItem}
@@ -31,6 +49,9 @@ export default function ProductList() {
         numColumns={2}
         contentContainerStyle={styles.list}
       />
+        <TouchableOpacity style={styles.moreButton}>
+        <Text style={styles.moreButtonText}>Mais</Text>
+      </TouchableOpacity>
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet , StatusBar } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -9,7 +9,8 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 25,
+    paddingTop: StatusBar.currentHeight,
   },
   backButton: {
     fontSize: 18,
@@ -47,5 +48,18 @@ export default StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
     color: '#888',
+  },
+  logoutButton: {
+    marginTop: 30,
+    alignSelf: 'center',
+    backgroundColor: '#000',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  logoutText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

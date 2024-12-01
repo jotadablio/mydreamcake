@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, StatusBar } from 'react-native';
 import styles from './styles';
 
 export default function AddFundsScreen() {
@@ -15,7 +15,7 @@ export default function AddFundsScreen() {
           style={styles.icon}
         />
       </View>
-
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       {/* Escolha do meio de pagamento */}
       <Text style={styles.subtitle}>Escolha o meio de pagamento</Text>
 

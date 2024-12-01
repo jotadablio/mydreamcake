@@ -1,15 +1,39 @@
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
-  message: {
+  topbar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: '#000',
+    paddingTop: StatusBar.currentHeight,
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  backButtonText: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  title: {
     fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  message: {
+    fontSize: 16,
     color: '#888',
     marginBottom: 20,
     textAlign: 'center',
@@ -18,9 +42,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f8c1c1',
-    padding: 10,
-    borderRadius: 10,
-    marginTop: 20,
+    padding: 12,
+    borderRadius: 8,
   },
   buttonIcon: {
     width: 40,

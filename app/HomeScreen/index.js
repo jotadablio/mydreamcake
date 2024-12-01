@@ -5,17 +5,20 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import AddFundsScreen from '../addFunds/index';
 import ProfileScreen from '../Profile';
-import styles from './styles'; // Importando os estilos
+import styles from './styles'; 
 import { useAuth } from '../context/AuthContext';
 import ShopScreen from '../Shop';
+import ProductList from '../ProductList';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator
 
 export default function HomeScreen({ navigation }) {
   const logoPosition = useRef(new Animated.Value(0)).current;
   const buttonOpacity = useRef(new Animated.Value(0)).current;
-  const { isLoggedIn, setRedirectAfterLogin } = useAuth(); // Estado de login
-
+  const { isLoggedIn, setRedirectAfterLogin } = useAuth();
+  
   useEffect(() => {
     Animated.timing(logoPosition, {
       toValue: -100,
@@ -89,7 +92,7 @@ export default function HomeScreen({ navigation }) {
         )}
       </Tab.Screen>
 
-      {/* Tela Pedidos */}
+     {/* Tela Pedidos */}
       <Tab.Screen
         name="Orders"
         listeners={{
