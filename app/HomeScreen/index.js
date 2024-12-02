@@ -10,9 +10,11 @@ import { useAuth } from '../context/AuthContext';
 import ShopScreen from '../Shop';
 import ProductList from '../ProductList';
 import { createStackNavigator } from '@react-navigation/stack';
+import CupcakeStack from '../CupcakeStack';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator
+
 
 export default function HomeScreen({ navigation }) {
   const logoPosition = useRef(new Animated.Value(0)).current;
@@ -121,6 +123,7 @@ export default function HomeScreen({ navigation }) {
           ) : null
         }
       </Tab.Screen>
+      
 
       {/* Tela Adicionar Saldo */}
       <Tab.Screen
@@ -138,6 +141,7 @@ export default function HomeScreen({ navigation }) {
         }}
       />
 
+        
       {/* Tela Perfil */}
       <Tab.Screen
         name="Profile"

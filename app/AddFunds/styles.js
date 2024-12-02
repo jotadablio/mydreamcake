@@ -4,22 +4,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
     alignItems: 'center',
+    paddingHorizontal: 0,
   },
   header: {
-    alignItems: 'center',
-    marginBottom: 20,
-    paddingTop: StatusBar.currentHeight,
+    width: '100%',
+    backgroundColor: '#000', 
+    paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 20, 
+    paddingBottom: 10,
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingHorizontal: 5,
+    
   },
   title: {
-    fontSize: 20,
+    color: '#fff', 
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    paddingLeft: 30,
+    textAlign: 'row', 
+    flex: 1,
   },
   icon: {
-    width: 60,
-    height: 60,
+    marginVertical: 20, 
+  width: 80,
+  height: 80,
   },
   subtitle: {
     fontSize: 16,
@@ -68,6 +77,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     fontWeight: 'bold',
+  },
+  backButton: {
+    marginRight: 40,
+  },
+  backButtonText: {
+    color: '#fff',
+    fontSize: 16,
   },
 });
 

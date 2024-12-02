@@ -9,14 +9,13 @@ export default StyleSheet.create({
   topbar: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: '#000',
     paddingTop: StatusBar.currentHeight,
   },
   backButton: {
-    marginRight: 10,
+    marginRight: 100,
   },
   backButtonText: {
     color: '#fff',
@@ -26,6 +25,8 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
+    textAlign: 'center',
+
   },
   content: {
     flex: 1,

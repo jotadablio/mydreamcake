@@ -15,22 +15,23 @@ export default function ProductList() {
   
   const handleGoBack = () => {
     if (navigation.canGoBack()) {
-      navigation.goBack(); // Voltar para a tela anterior
+      navigation.goBack(); 
     } else {
-      navigation.navigate('Home'); // Redirecionar para a HomeScreen se não puder voltar
+      navigation.navigate('Home'); 
     }
   };
+
   
   const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={item.image} style={styles.image} />
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.price}>{item.price}</Text>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>+</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    <TouchableOpacity
+    style={styles.card}
+    onPress={() => navigation.navigate('ProductDetail', { cupcake: item })}
+  >
+    <Image source={item.image} style={styles.image} />
+    <Text style={styles.name}>{item.name}</Text>
+    <Text style={styles.price}>{item.price}</Text>
+  </TouchableOpacity>
+);
 
   return (
     <View style={styles.container}>

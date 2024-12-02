@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, StatusBar } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export default function AddFundsScreen() {
+  const navigation = useNavigation();
   const [selectedMethod, setSelectedMethod] = useState(''); // Estado para selecionar o método de pagamento
 
   return (
     <View style={styles.container}>
-      {/* Cabeçalho */}
       <View style={styles.header}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      <Text style={styles.backButtonText}>{"< Voltar"}</Text>
+  </TouchableOpacity>
         <Text style={styles.title}>ADICIONAR FUNDOS</Text>
-        <Image
+      </View>
+      <Image
           source={require('../../assets/icons/addFundsIcon.png')} // Ícone fictício
           style={styles.icon}
         />
-      </View>
-      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       {/* Escolha do meio de pagamento */}
       <Text style={styles.subtitle}>Escolha o meio de pagamento</Text>
 

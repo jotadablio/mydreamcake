@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingBottom: Platform.OS === 'android' ? 60 : 80, // Dinâmico para espaço da navegação
+    paddingBottom: Platform.OS === 'android' ? 80 : 70, 
   },
   topbar: {
     flexDirection: 'row',
@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: '#000',
-    paddingTop: Platform.OS === 'android' ? 25 : 45, // Melhor compatibilidade com barra de status
+    paddingTop: Platform.OS === 'android' ? 25 : 45,
   },
   backButton: {
-    marginRight: 10,
+    marginRight: 5,
   },
   backButtonText: {
     color: '#fff',
@@ -24,15 +24,17 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    textAlign: 'center',
+    alignItems: 'center',
+    textAlign: 'row',
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
+    paddingLeft: 70,
   },
   list: {
     flexGrow: 1,
     paddingHorizontal: 5,
-    paddingBottom: 80, // Espaço suficiente para a barra de navegação
+    paddingBottom: 80, 
   },
   card: {
     flex: 1,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     borderRadius: 20,
     padding: 5,
-    marginTop: 5,
+    marginTop:5,
     width: 40,
     alignItems: 'center',
   },
@@ -75,7 +77,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   moreButton: {
-    marginTop: 40,
+    marginTop: 20, 
+    marginBottom: 80, 
     alignSelf: 'center',
     backgroundColor: '#000',
     paddingVertical: 10,

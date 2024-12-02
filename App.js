@@ -13,12 +13,14 @@ import LoginScreen from './app/Login/index';
 import ProfileScreen from './app/Profile/index';
 import DeliveryScreen from './app/Delivery/index';
 import ShopScreen from './app/Shop/index';
+import ProductDetail from './app/ProductDetail';
 
 const Stack = createStackNavigator();
 
 export default function App() { 
   return (
     <AuthProvider>
+    <StatusBar translucent barStyle="light-content" backgroundColor="#000" />
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* Tela de Loading */}
@@ -35,6 +37,8 @@ export default function App() {
         <Stack.Screen name="Delivery" component={DeliveryScreen} />
         {/*Shop*/}
         <Stack.Screen name="Shop" component={ShopScreen} />
+        {/*Detalhes do produto*/}
+        <Stack.Screen name="ProductDetail" component={ProductDetail} />
       </Stack.Navigator>
     </NavigationContainer>
     </AuthProvider>
