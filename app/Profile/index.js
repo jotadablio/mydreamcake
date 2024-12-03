@@ -21,8 +21,9 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.backButton}> {"<"}</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}
+          style={styles.backButton}>
+            <Text style={styles.backButtonText}>{"<"}</Text>
         </TouchableOpacity>
         <Text style={styles.title}>PERFIL</Text>
       </View>

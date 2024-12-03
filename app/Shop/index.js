@@ -15,7 +15,7 @@ export default function ShopScreen() {
     <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
     <View style={styles.topbar}>
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <Text style={styles.backButtonText}>{"< Voltar"}</Text>
+      <Text style={styles.backButtonText}>{"< Voltar"}</Text>
       </TouchableOpacity>
       <Text style={styles.title}>PEDIDOS</Text>
     </View>

@@ -15,11 +15,14 @@ export default StyleSheet.create({
   backButton: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginRight: 10,
+    marginRight: 20,
+    paddingLeft: 15,
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    alignItems: 'center',
+    paddingLeft: 100,
   },
   profileIcon: {
     width: 100,
