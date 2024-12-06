@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default function LoadingScreen({ navigation }) {
   useEffect(() => {
-    // Navega para a tela "Home" após 2 segundos
     setTimeout(() => {
       navigation.replace('Home');
     }, 3000);

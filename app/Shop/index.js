@@ -26,7 +26,7 @@ export default function ShopScreen() {
       {/* Botão de navegação para produtos */}
       <TouchableOpacity style={styles.button} onPress={handleGoToProducts}>
         <Image
-          source={require('../../assets/icons/cupluscake.png')} // Ícone do cupcake
+          source={require('../../assets/icons/cupluscake.png')} 
           style={styles.buttonIcon}
         />
         <Text style={styles.buttonText}>Explorar Produtos</Text>

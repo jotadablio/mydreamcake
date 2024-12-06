@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductList from './ProductList'; // Tela de cupcakes
-import ProductDetail from './ProductDetail/'; // Tela de detalhes do cupcake (se existir)
+import ProductList from './ProductList'; 
+import ProductDetail from './ProductDetail/'; 
 
 const Stack = createStackNavigator();
 

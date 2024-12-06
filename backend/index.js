@@ -16,8 +16,8 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'dontblameitonme', // Substitua pela sua senha
-  database: 'dreamcake_db', // Substitua pelo nome do seu banco de dados
+  password: 'dontblameitonme', 
+  database: 'dreamcake_db', 
 });
 
 db.connect((err) => {

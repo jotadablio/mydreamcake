@@ -29,7 +29,7 @@ export default function ProfileScreen() {
       </View>
       {/* Ícone do Perfil */}
       <Image
-        source={require('../../assets/icons/perfil.png')} // Substitua pelo ícone correto
+        source={require('../../assets/icons/perfil.png')} 
         style={styles.profileIcon}
       />
       {/* Botões */}

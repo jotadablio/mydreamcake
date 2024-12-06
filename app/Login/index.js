@@ -10,10 +10,10 @@ export default function LoginScreen({ navigation }) {
   const handleLogin = () => {
     login();
     if (redirectAfterLogin) {
-      navigation.replace(redirectAfterLogin); // Navega para a rota salva
-      setRedirectAfterLogin(null); // Limpa o redirecionamento
+      navigation.replace(redirectAfterLogin);
+      setRedirectAfterLogin(null); 
     } else {
-      navigation.navigate('Home'); // Volta para a Home caso não tenha redirecionamento
+      navigation.navigate('Home'); 
     }
   };
   

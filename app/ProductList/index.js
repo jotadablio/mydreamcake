@@ -12,8 +12,8 @@ const cupcakes = [
 ];
 
 export default function ProductList() {
-  const [cupcakes, setCupcakes] = useState([]); // Estado para os cupcakes
-  const [loading, setLoading] = useState(true); // Estado para o carregamento
+  const [cupcakes, setCupcakes] = useState([]); 
+  const [loading, setLoading] = useState(true); 
   const navigation = useNavigation();
   
   const handleGoBack = () => {

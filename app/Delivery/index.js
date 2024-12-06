@@ -40,7 +40,7 @@ export default function DeliveryScreen() {
       </View>
       <TouchableOpacity style={styles.mapButton}>
         <Image
-          source={require('../../assets/icons/map.png')} // Ícone do Google Maps
+          source={require('../../assets/icons/map.png')} 
           style={styles.mapIcon}
         />
       </TouchableOpacity>

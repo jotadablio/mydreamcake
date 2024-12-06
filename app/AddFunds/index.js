@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function AddFundsScreen() {
   const navigation = useNavigation();
-  const [selectedMethod, setSelectedMethod] = useState(''); // Estado para selecionar o método de pagamento
+  const [selectedMethod, setSelectedMethod] = useState('');
 
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ export default function AddFundsScreen() {
         <Text style={styles.title}>ADICIONAR FUNDOS</Text>
       </View>
       <Image
-          source={require('../../assets/icons/addFundsIcon.png')} // Ícone fictício
+          source={require('../../assets/icons/addFundsIcon.png')} 
           style={styles.icon}
         />
       {/* Escolha do meio de pagamento */}

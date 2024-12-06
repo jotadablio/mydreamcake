@@ -5,9 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import { AuthProvider, useAuth } from './app/context/AuthContext';
 
-// Importar telas
-import LoadingScreen from './app/LoadingScreen'; // Tela de carregamento
-import HomeScreen from './app/HomeScreen/index'; // Tela Home
+
+import LoadingScreen from './app/LoadingScreen'; 
+import HomeScreen from './app/HomeScreen/index'; 
 import ProductList from './app/ProductList/index';
 import LoginScreen from './app/Login/index';
 import ProfileScreen from './app/Profile/index';
